@@ -1,5 +1,8 @@
 package laboratoire2;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Huffman{
 
     // Ne pas changer ces fonctions, elles seront utilisées pour tester votre programme
@@ -11,8 +14,8 @@ public class Huffman{
 
     }
 
-    public int[] creerTableFrequence(String filePath){
-        int[] T = new int[256];
+    public List<Integer> creerTableFrequence(String filePath){
+        List<Integer> T = new ArrayList<>();
 
         return null;
     }
