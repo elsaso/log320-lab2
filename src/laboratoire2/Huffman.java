@@ -11,4 +11,10 @@ public class Huffman{
 
     }
 
+    public int[] creerTableFrequence(String filePath){
+        int[] T = new int[256];
+
+        return null;
+    }
+
 }
