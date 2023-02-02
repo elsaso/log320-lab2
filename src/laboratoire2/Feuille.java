@@ -1,9 +1,9 @@
 package laboratoire2;
 
-public class Leaf implements INode {
+public class Feuille implements INoeud {
 
     int count;
-    public Leaf(int count){
+    public Feuille(int count){
         this.count = count;
     }
 

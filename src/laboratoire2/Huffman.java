@@ -14,7 +14,7 @@ public class Huffman{
 
     }
 
-    public List<Integer> creerTableFrequence(String filePath){
+    public TableFrequence creerTableFrequence(String filePath){
         List<Integer> T = new ArrayList<>();
 
         return null;
