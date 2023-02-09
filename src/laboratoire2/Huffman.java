@@ -1,5 +1,8 @@
 package laboratoire2;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +10,8 @@ public class Huffman{
 
     // Ne pas changer ces fonctions, elles seront utilisées pour tester votre programme
     public void Compresser(String nomFichierEntre, String nomFichierSortie){
+        BitInputStream in = new BitInputStream(nomFichierEntre);
+        BitOutputStream out = new BitOutputStream(nomFichierSortie);
 
     }
 
@@ -14,9 +19,8 @@ public class Huffman{
 
     }
 
-    public TableFrequence creerTableFrequence(String filePath){
-        List<Integer> T = new ArrayList<>();
-        return null;
+    public TableFrequence creerTableFrequence(BitInputStream in , BitOutputStream out){
+        TableFrequence tableFreq = new TableFrequence(new int[257]);
     }
 
 }
