@@ -11,27 +11,33 @@ public class TableFrequence {
         this.frequences = frequences;
     }
 
-    public Arbre generateTable() {
-        List<INoeud> listNodes = new ArrayList<>();
+    public ArbreBinaire generateTable() {
+        List<NoeudWrapper> listNodes = new ArrayList<>();
         for (int i = 0; i < frequences.length; i++) {
             if (frequences[i] > 0) {
-                listNodes.add(new Feuille(i, frequences[i]));
+                NoeudWrapper n = new NoeudWrapper(new Feuille(i), i, frequences[i]);
+                listNodes.add(n);
             }
         }
 
         for (int i = 0; i < frequences.length; i++) {
             if (listNodes.size() < 2) {
                 if (frequences[i] == 0) {
-                    listNodes.add(new Noeud(new Feuille(i, frequences[i]), i, 0));
+                    NoeudWrapper n = new NoeudWrapper(new Feuille(i), i, 0);
+                    listNodes.add(n);
                 }
             }
         }
 
         while (listNodes.size() > 1){
-            INoeud n1 = listNodes.remove(0);
-            INoeud n2 = listNodes.remove(0);
+            NoeudWrapper n1 = listNodes.remove(0);
+            NoeudWrapper n2 = listNodes.remove(0);
+            Noeud nouvoNo = new Noeud(n1.getNoeud(), n2.getNoeud());
+            int minimumId = Math.min(n1.getPlusPetitIdentifiant(), n2.getPlusPetitIdentifiant());
+            NoeudWrapper wrapper = new NoeudWrapper(nouvoNo, minimumId, n1.getFrenquence() + n2.getFrenquence());
+            listNodes.add(wrapper);
         }
-        return null;
+        return new ArbreBinaire((INoeud) listNodes.remove(0).getNoeud());
     }
 
 }

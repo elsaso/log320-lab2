@@ -24,13 +24,4 @@ public class Noeud implements INoeud {
     public void setEnfantDroit(INoeud enfantDroit) {
         this.enfantDroit = enfantDroit;
     }
-
-    public int compareTo(Noeud noeud) {
-        if (this.frequences < noeud.frequences)
-            return -1;
-        else if (this.frequences > noeud.frequences)
-            return 1;
-        else
-            return 0;
-    }
 }
