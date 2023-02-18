@@ -40,4 +40,7 @@ public class TableFrequence {
         return new ArbreBinaire((INoeud) listNodes.remove(0).getNoeud());
     }
 
+    public void incremente(int lettre) {
+        frequences[lettre]++;
+    }
 }

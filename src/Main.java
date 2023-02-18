@@ -8,7 +8,7 @@ public class Main {
         String nomFichierSortie = "test-out.png";
 
         huffman.Compresser(nomFichierEntre, nomFichierSortie);
-        huffman.Decompresser(nomFichierSortie, nomFichierEntre);
+        //huffman.Decompresser(nomFichierSortie, nomFichierEntre);
 
     }
 }
