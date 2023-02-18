@@ -6,8 +6,8 @@ public class Main {
         // text Allo dans le png
         String nomFichierEntre = "test.png";
         String nomFichierSortie = "test-out.png";
-
+        String uncompressed = "post.png";
         huffman.Compresser(nomFichierEntre, nomFichierSortie);
-        huffman.Decompresser(nomFichierSortie, nomFichierEntre);
+        huffman.Decompresser(nomFichierSortie, uncompressed);
     }
 }
