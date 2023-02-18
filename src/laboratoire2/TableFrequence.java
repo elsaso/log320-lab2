@@ -37,7 +37,7 @@ public class TableFrequence {
             NoeudWrapper wrapper = new NoeudWrapper(nouvoNo, minimumId, n1.getFrenquence() + n2.getFrenquence());
             listNodes.add(wrapper);
         }
-        return new ArbreBinaire((INoeud) listNodes.remove(0).getNoeud());
+        return new ArbreBinaire((INoeud) listNodes.remove(0).getNoeud(), frequences.length);
     }
 
     public void incremente(int lettre) {

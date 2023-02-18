@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Huffman{
@@ -22,7 +23,9 @@ public class Huffman{
     }
 
     public TableFrequence creerTableFrequence(BitInputStream in , BitOutputStream out){
-        TableFrequence tableFreq = new TableFrequence(new int[257]);
+        int[] initFreqs = new int[257];
+        Arrays.fill(initFreqs, 1);
+        TableFrequence tableFreq = new TableFrequence(initFreqs);
         ArbreBinaire arbre = tableFreq.generateTable();
         int compteur = 0;
         while (true) {
@@ -40,7 +43,7 @@ public class Huffman{
             if (compteur < 262144 && (compteur > 0 && Integer.bitCount(compteur) == 1) || compteur % 262144 == 0)
                 arbre = tableFreq.generateTable();
             if (compteur % 262144 == 0)  // Reset frequency table
-                tableFreq = new TableFrequence(new int[257]);
+                tableFreq = new TableFrequence(initFreqs);
         }
         List<Integer> bits = arbre.getByte(256);
         for (int b : bits)

@@ -7,12 +7,13 @@ public class ArbreBinaire {
     private INoeud racine;
     private List<List<Integer>> binaire;
 
-    public ArbreBinaire(INoeud racine) {
+    public ArbreBinaire(INoeud racine, int limite) {
         this.racine = racine;
         binaire = new ArrayList<>();
-        for (int i = 0; i < 256; i++){
+        for (int i = 0; i < limite; i++){
             binaire.add(null);
         }
+        recursiveBuilder(racine, new ArrayList<>());
     }
 
     public void recursiveBuilder(INoeud racine, List<Integer> branches){
