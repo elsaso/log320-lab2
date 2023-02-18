@@ -29,7 +29,14 @@ public class ArbreBinaire {
         } else if (racine instanceof Feuille) {
             binaire.set(((Feuille) racine).identifiant, new ArrayList<Integer>(branches));
         }
+    }
 
+    public INoeud getRacine() {
+        return racine;
+    }
+
+    public List<List<Integer>> getBinaire() {
+        return binaire;
     }
 
     public List<Integer> getByte(int lettre){
