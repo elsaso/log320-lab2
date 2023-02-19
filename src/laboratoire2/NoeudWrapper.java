@@ -36,12 +36,5 @@ public class NoeudWrapper implements Comparable<NoeudWrapper>{
         this.frenquence = frenquence;
     }
 
-    public int compareTo(NoeudWrapper noeud) {
-        if (this.frenquence < noeud.frenquence)
-            return -1;
-        else if (this.frenquence > noeud.frenquence)
-            return 1;
-        else
-            return 0;
-    }
+    
 }

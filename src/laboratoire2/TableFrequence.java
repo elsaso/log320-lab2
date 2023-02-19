@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TableFrequence {
+    // Table de frequence implementer avec une hashmap
+    // chaque charactere dans le fichier sera stocker dedans
     private int[] frequences;
     private INoeud racine;
 
@@ -29,7 +31,7 @@ public class TableFrequence {
             }
         }
 
-        while (listNodes.size() > 1){
+        while (listNodes.size() > 1) {
             NoeudWrapper n1 = listNodes.remove(0);
             NoeudWrapper n2 = listNodes.remove(0);
             Noeud nouvoNo = new Noeud(n1.getNoeud(), n2.getNoeud());
@@ -38,6 +40,10 @@ public class TableFrequence {
             listNodes.add(wrapper);
         }
         return new ArbreBinaire((INoeud) listNodes.remove(0).getNoeud(), frequences.length);
+    }
+
+    public int[] getFrequences() {
+        return frequences;
     }
 
     public void incremente(int lettre) {

@@ -40,6 +40,6 @@ public class ArbreBinaire {
     }
 
     public List<Integer> getByte(int lettre){
-        return binaire.get(lettre);
+         return binaire.get(lettre);
     }
 }
