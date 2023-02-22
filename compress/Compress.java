@@ -25,6 +25,7 @@ public class Compress {
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(tree);
 
+            
             //BitOutputStream bit = new BitOutputStream(outputFilePath);
             String binNumber="";
             for (byte b : this.octetDuFichier) {
