@@ -2,6 +2,7 @@ package laboratoire2;
 
 import compress.Compress;
 import compress.TableFrequence;
+import module.BitInputStream;
 import module.HuffmanTree;
 
 import java.io.*;
@@ -31,19 +32,6 @@ public class Huffman {
             System.out.print("-");
         }
 
-        // Sérialiser l'objet en binaire
-        try {
-            FileOutputStream fileOut = new FileOutputStream(nomFichierSortie);
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(tree);
-            out.close();
-            fileOut.close();
-            System.out.println("");
-            System.out.println("L'objet a été sérialisé en binaire dans " + nomFichierSortie);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
         Compress compress = new Compress(tree, huffmanCodes, tableFrequence.getBytes());
         try {
             compress.compressfile(nomFichierSortie);
@@ -52,25 +40,7 @@ public class Huffman {
         }
     }
 
-    public void Decompresser(String nomFichierEntre, String nomFichierSortie){
-        // Désérialiser l'objet depuis le fichier binaire et stocker dans une variable
-        HuffmanTree obj2 = null;
-        try {
-            FileInputStream fileIn = new FileInputStream("myclass.bin");
-            DataInputStream in = new DataInputStream(fileIn);
-            obj2 = (HuffmanTree) new ObjectInputStream(in).readObject();
-            in.close();
-            fileIn.close();
-            System.out.println("L'objet a été désérialisé depuis myclass.bin : " + obj2);
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        Map<Integer, String> huffmanObj2 = obj2.getHuffmanCodes(root);
-        System.out.println("les chemin d'accés de l'arbre Déserialisé");
-        for (Map.Entry<Integer, String> entry : huffmanObj2.entrySet()) {
-            System.out.println("Octet: " + entry.getKey() + ", Code de Huffman: " + entry.getValue());
-        }
+    public void decompress(String compressedFile, String decompressedFile) {
 
     }
 

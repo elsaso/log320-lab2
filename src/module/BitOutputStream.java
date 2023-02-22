@@ -71,6 +71,13 @@ public class BitOutputStream {
         }
     }
 
+    public void writeString(String bits) throws IOException {
+        for (int i = 0; i < bits.length(); i++) {
+            int bit = bits.charAt(i) - '0';
+            writeBit(bit);
+        }
+    }
+
     // included to ensure that the stream is closed
     protected void finalize() {
         close();

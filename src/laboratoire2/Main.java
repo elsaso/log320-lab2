@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         Huffman huffman = new Huffman();
         huffman.Compresser("test.txt", "test-out.txt");
-        huffman.Decompresser("test-out.txt", "decompressed.txt");
+        huffman.decompress("test-out.txt", "decompressed.txt");
     }
 
 
