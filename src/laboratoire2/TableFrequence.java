@@ -1,6 +1,4 @@
-package compress;
-
-import module.BitInputStream;
+package laboratoire2;
 
 import java.util.ArrayList;
 
