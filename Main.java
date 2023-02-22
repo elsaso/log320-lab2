@@ -60,18 +60,52 @@ public class Main {
 
 
 
-        // Désérialiser l'objet depuis le fichier binaire et stocker dans une variable
+
+
+
         HuffmanTree obj2 = null;
         try {
-            FileInputStream fileIn = new FileInputStream("myclass.bin");
-            DataInputStream in = new DataInputStream(fileIn);
-            obj2 = (HuffmanTree) new ObjectInputStream(in).readObject();
-            in.close();
+            // Lire le fichier binaire dans un tableau de bytes
+            File file = new File("myclass.bin");
+            FileInputStream fileIn = new FileInputStream(file);
+            byte[] buffer = new byte[(int) file.length()];
+            fileIn.read(buffer);
             fileIn.close();
-            System.out.println("L'objet a été désérialisé depuis myclass.bin : " + obj2);
-        } catch (IOException | ClassNotFoundException e) {
+
+            // Désérialiser l'objet à partir du tableau de bytes
+            ByteArrayInputStream bis = new ByteArrayInputStream(buffer);
+            ObjectInputStream in = new ObjectInputStream(bis);
+            obj2 = (HuffmanTree) in.readObject();
+            in.close();
+            bis.close();
+            System.out.println("L'objet a été désérialisé depuis myclass.bin");
+
+            // Lire les bits qui suivent l'objet désérialisé
+            BitInputStream bis2 = new BitInputStream(bis.toString());
+            int bit;
+            while ((bit = bis2.readBit()) != -1) {
+                System.out.print(bit);
+            }
+            bis2.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+
+
+        // Désérialiser l'objet depuis le fichier binaire et stocker dans une variable
+//        HuffmanTree obj2 = null;
+//        try {
+//            FileInputStream fileIn = new FileInputStream("myclass.bin");
+//            DataInputStream in = new DataInputStream(fileIn);
+//            obj2 = (HuffmanTree) new ObjectInputStream(in).readObject();
+//            in.close();
+//            fileIn.close();
+//            System.out.println("L'objet a été désérialisé depuis myclass.bin : " + obj2);
+//        } catch (IOException | ClassNotFoundException e) {
+//            e.printStackTrace();
+//        }
 
         Map<Integer, String> huffmanObj2 = obj2.getHuffmanCodes(root);
         System.out.println("les chemin d'accés de l'arbre Déserialisé");
