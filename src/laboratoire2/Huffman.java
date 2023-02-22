@@ -9,9 +9,8 @@ public class Huffman {
 
     // Ne pas changer ces fonctions, elles seront utilisées pour tester votre programme
     public void Compresser(String nomFichierEntre, String nomFichierSortie) {
-        BitInputStream in = new BitInputStream(nomFichierEntre);
         BitOutputStream out = new BitOutputStream(nomFichierSortie);
-        compresserHelper(in, out);
+        compresserHelper(nomFichierEntre, out);
     }
 
     public void Decompresser(String nomFichierEntre, String nomFichierSortie) {
@@ -24,10 +23,10 @@ public class Huffman {
         }
     }
 
-    public void compresserHelper(BitInputStream in, BitOutputStream out) {
+    public void compresserHelper(String fileName, BitOutputStream out) {
         TableFrequence freqs = null;
         try {
-            freqs = getFrequences(in);
+            freqs = getFrequences(fileName);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -45,7 +44,12 @@ public class Huffman {
             for (int j = 7; j >= 0; j--)
                 out.writeBit((val >>> j) & 1);
         }
+        BitInputStream in = new BitInputStream(fileName);
         writeCompressed(arb, in, out);
+    }
+
+    private void writeCodeLenghtTable(BitOutputStream out, SchemaArbre arbre1) {
+
     }
 
     private void writeCompressed(ArbreBinaire arbre, BitInputStream in, BitOutputStream out) {
@@ -98,13 +102,14 @@ public class Huffman {
         }
     }
 
-    private TableFrequence getFrequences(BitInputStream in) throws IOException {
+    private TableFrequence getFrequences(String fileName) throws IOException {
         TableFrequence freqs = new TableFrequence(new int[257]);
+        InputStream inputStream = new BufferedInputStream(new FileInputStream(new File(fileName)));
             while (true) {
-                int b = in.readBit();
-                if (b == -1)
+                int byteRead = inputStream.read();
+                if (byteRead == -1)
                     break;
-                freqs.incremente(b);
+                freqs.incremente(byteRead);
         }
         return freqs;
     }

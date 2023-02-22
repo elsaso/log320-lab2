@@ -3,13 +3,13 @@ package laboratoire2;
 public class NoeudWrapper implements Comparable<NoeudWrapper>{
     private INoeud noeud;
     private int plusPetitIdentifiant;
-    private long frenquence;  // Using wider type prevents overflow
+    private long frequence;  // Using wider type prevents overflow
 
 
     public NoeudWrapper(INoeud noeud, int id, long freq) {
         this.noeud = noeud;
         this.plusPetitIdentifiant = id;
-        this.frenquence = freq;
+        this.frequence = freq;
     }
 
     public INoeud getNoeud() {
@@ -29,11 +29,21 @@ public class NoeudWrapper implements Comparable<NoeudWrapper>{
     }
 
     public long getFrenquence() {
-        return frenquence;
+        return frequence;
     }
 
     public void setFrenquence(long frenquence) {
-        this.frenquence = frenquence;
+        this.frequence = frenquence;
+    }
+
+
+    public int compareTo(NoeudWrapper noeud) {
+        if (this.frequence < noeud.frequence)
+            return -1;
+        else if (this.frequence > noeud.frequence)
+            return 1;
+        else
+            return 0;
     }
 
     
